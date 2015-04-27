@@ -1,0 +1,40 @@
+apply plugin: 'java'
+
+group = 'griffio.jclouds'
+version = '1.0-SNAPSHOT'
+
+description = "jclouds api"
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+
+  ext.jcloudsVersion = '1.9.0'
+
+  compile(
+      "org.apache.jclouds.driver:jclouds-slf4j:${jcloudsVersion}",
+      "org.apache.jclouds.driver:jclouds-sshj:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-cloudservers-us:${jcloudsVersion}",
+      "org.apache.jclouds.labs:rackspace-cloudfiles-us:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-cloudblockstorage-us:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-clouddatabases-us:${jcloudsVersion}",
+      "org.apache.jclouds.labs:rackspace-cloudqueues-us:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-cloudloadbalancers-us:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-clouddns-us:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-cloudservers-uk:${jcloudsVersion}",
+      "org.apache.jclouds.labs:rackspace-cloudfiles-uk:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-cloudblockstorage-uk:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-clouddatabases-uk:${jcloudsVersion}",
+      "org.apache.jclouds.labs:rackspace-cloudqueues-uk:${jcloudsVersion}",
+      "org.apache.jclouds.labs:rackspace-autoscale-us:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-cloudloadbalancers-uk:${jcloudsVersion}",
+      "org.apache.jclouds.provider:rackspace-clouddns-uk:${jcloudsVersion}"
+  )
+
+  testCompile("junit:junit:4.12")
+}
