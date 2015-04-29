@@ -15,8 +15,9 @@ public class NovaAuth implements Closeable {
 
   private final NovaApi nova;
 
-  public NovaAuth(String identity, String credential, String provider, Properties overrides) {
-    nova = ContextBuilder.newBuilder(provider)
+  private NovaAuth(String identity, String credential, String provider, Properties overrides) {
+    nova = ContextBuilder
+        .newBuilder(provider)
         .credentials(identity, credential)
         .overrides(overrides)
         .buildApi(NovaApi.class);
@@ -24,6 +25,10 @@ public class NovaAuth implements Closeable {
 
   public Collection<String> availableRegions() {
     return nova.getConfiguredRegions();
+  }
+
+  public NovaServer server(String region) {
+    return new NovaServer(nova.getServerApi(region), nova.getImageApi(region), nova.getFlavorApi(region));
   }
 
   public void close() throws IOException {
